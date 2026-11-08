@@ -25,7 +25,7 @@
 <div class="card">
   <h2>اطلاعات شرکت</h2>
   <form data-orig="/admin/settings.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="_csrf" value="fc73e8b332ed83ea70701386b9cbbbac"><input type="hidden" name="action" value="settings">
+    <input type="hidden" name="_csrf" value="453fc2fa43001945ba18108f55929e49"><input type="hidden" name="action" value="settings">
     <div class="form-grid">
               <div class="field"><label>نام شرکت</label>
           <input type="text" name="company_name" class="" value="شرکت سرمایه‌گذاری نمونه">        </div>
@@ -44,13 +44,15 @@
             <div class="field"><label>لوگو</label><input type="file" name="logo" accept="image/*">
         </div>
     </div>
+    <label class="check"><input type="checkbox" name="force_password_change" value="1"> سهامداران در اولین ورود مجبور به تغییر رمز عبور (کد ملی) باشند</label>
+    <p class="muted" style="margin:0 0 12px;font-size:13px">اگر خاموش باشد، سهامدار می‌تواند با همان کد ملی وارد شود و هر وقت خواست از منوی «تغییر رمز عبور» رمزش را عوض کند.</p>
     <button class="btn btn-orange" type="submit">ذخیره</button>
   </form>
 </div>
 
 <div class="card" style="max-width:560px">
   <h2>تغییر رمز عبور شما</h2>
-  <form data-orig="/admin/settings.php" method="post"><input type="hidden" name="_csrf" value="fc73e8b332ed83ea70701386b9cbbbac"><input type="hidden" name="action" value="password">
+  <form data-orig="/admin/settings.php" method="post"><input type="hidden" name="_csrf" value="453fc2fa43001945ba18108f55929e49"><input type="hidden" name="action" value="password">
     <div class="field"><label>رمز فعلی</label><input class="ltr" type="password" name="current" required=""></div>
     <div class="field"><label>رمز جدید</label><input class="ltr" type="password" name="new" required="" minlength="8"></div>
     <div class="field"><label>تکرار رمز جدید</label><input class="ltr" type="password" name="confirm" required="" minlength="8"></div>
@@ -62,10 +64,10 @@
   <h2>مدیران سامانه</h2>
   <div class="table-wrap"><table class="table">
     <thead><tr><th>نام کاربری</th><th>نام</th><th>آخرین ورود</th><th></th></tr></thead>
-    <tbody><tr><td class="ltr">admin</td><td>مدیر سامانه</td><td>۱۴۰۵/۰۸/۱۷ ۱۰:۳۳</td>
+    <tbody><tr><td class="ltr">admin</td><td>مدیر سامانه</td><td>۱۴۰۵/۰۸/۱۷ ۱۰:۴۹</td>
       <td></td></tr></tbody>
   </table></div>
-  <form data-orig="/admin/settings.php" method="post" class="form-grid" style="margin-top:14px;align-items:end"><input type="hidden" name="_csrf" value="fc73e8b332ed83ea70701386b9cbbbac"><input type="hidden" name="action" value="admin_add">
+  <form data-orig="/admin/settings.php" method="post" class="form-grid" style="margin-top:14px;align-items:end"><input type="hidden" name="_csrf" value="453fc2fa43001945ba18108f55929e49"><input type="hidden" name="action" value="admin_add">
     <div class="field"><label>نام کاربری (انگلیسی)</label><input class="ltr" name="username" required=""></div>
     <div class="field"><label>نام</label><input name="full_name"></div>
     <div class="field"><label>رمز عبور</label><input class="ltr" type="password" name="password" required="" minlength="8"></div>
