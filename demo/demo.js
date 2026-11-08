@@ -41,9 +41,8 @@
       (D.users || []).forEach(function (x) { if (x[0] === sn) u = x; });
       if (!u) return showError(form, 'شماره سهام یا رمز عبور اشتباه است.');
       var saved = store('demo-pw-' + sn);
-      if (saved) { if (pw !== saved) return showError(form, 'شماره سهام یا رمز عبور اشتباه است.'); location.href = 'u' + sn + '/index.html'; return; }
-      if (pw !== u[1]) return showError(form, 'شماره سهام یا رمز عبور اشتباه است.');
-      location.href = 'u' + sn + '/first-login.html'; return;
+      if (pw !== u[1] && pw !== saved) return showError(form, 'شماره سهام یا رمز عبور اشتباه است.');
+      location.href = 'u' + sn + '/index.html'; return;
     }
     if (D.page === 'login' && D.ctx === 'admin') {
       if (form.username.value.trim() === 'admin' && form.password.value === 'Admin12345') location.href = 'index.html';
@@ -92,17 +91,17 @@
     var box = document.createElement('div'); box.className = 'demo-panel';
     var rows = (D.users || []).map(function (u) {
       var changed = store('demo-pw-' + u[0]);
-      return '<tr><td class="ltr">' + u[0] + '</td><td class="ltr">' + (changed ? '<i>رمز تغییر کرده</i>' : u[1]) + '</td><td><button type="button" data-u="' + u[0] + '">پر کن</button></td></tr>';
+      return '<tr><td class="ltr">' + u[0] + '</td><td class="ltr">' + u[1] + '</td><td><button type="button" data-u="' + u[0] + '">پر کن</button></td></tr>';
     }).join('');
-    box.innerHTML = '<h3>حساب‌های آزمایشی</h3><p style="margin:0 0 8px">نام کاربری = شماره سهام، رمز اولیه = کد ملی. مدیر: <b class="ltr">admin</b> / <b class="ltr">Admin12345</b></p>' +
+    box.innerHTML = '<h3>حساب‌های آزمایشی</h3><p style="margin:0 0 8px">نام کاربری = شماره سهام، رمز = کد ملی. (در این نسخه نمایشی، مرحله‌ی تغییر اجباری رمز در اولین ورود حذف شده است.) مدیر: <b class="ltr">admin</b> / <b class="ltr">Admin12345</b></p>' +
       '<table><thead><tr><th>شماره سهام</th><th>کد ملی (رمز اولیه)</th><th></th></tr></thead><tbody>' + rows + '</tbody></table>' +
-      '<p style="margin:8px 0 0"><button type="button" id="demoReset">بازگرداندن همه رمزها به حالت اولیه</button></p>';
+      '';
     card.parentNode.insertBefore(box, card.nextSibling);
     box.addEventListener('click', function (e) {
       var b = e.target.closest('button'); if (!b) return;
       if (b.id === 'demoReset') { (D.users || []).forEach(function (u) { try { localStorage.removeItem('demo-pw-' + u[0]); } catch (x) {} }); location.reload(); return; }
       var u = null; (D.users || []).forEach(function (x) { if (x[0] === b.getAttribute('data-u')) u = x; });
-      var f = document.querySelector('form'); f.username.value = u[0]; f.password.value = store('demo-pw-' + u[0]) ? '' : u[1]; f.password.focus();
+      var f = document.querySelector('form'); f.username.value = u[0]; f.password.value = u[1]; f.password.focus();
     });
   }
 })();
